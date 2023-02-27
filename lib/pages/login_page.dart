@@ -15,6 +15,8 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+
+
   Future signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
@@ -25,6 +27,8 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+
+
     super.dispose();
   }
 
@@ -38,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                 SingleChildScrollView(
                   child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Icon(
-            Icons.pedal_bike_rounded,
+            Icons.electric_bike,
             size: 200,
           ),
           SizedBox(height: 25),

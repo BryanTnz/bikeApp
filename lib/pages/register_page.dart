@@ -1,4 +1,5 @@
 import 'package:appmovil_ciclo/pages/home_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,18 +21,47 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  final _fullnameController = TextEditingController();
+  final _cellphoneController = TextEditingController();
+  final _ageController = TextEditingController();
+
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+
+    _fullnameController.dispose();
+    _cellphoneController.dispose();
+    _ageController.dispose();
     super.dispose();
   }
 
   Future Registrate() async {
+    // Create user email and password
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(), password: _passwordController.text.trim(),);
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),);
 
+    // Add collection Firebase
+    addUserDetails(
+        _fullnameController.text.trim(),
+        _emailController.text.trim(),
+        int.parse(_ageController.text.trim()),
+        int.parse(_cellphoneController.text.trim()),
+        _emailController.text.trim());
+  }
 
+  Future addUserDetails(
+      String fullName, String email, int age, int cellPhone, String lolo
+      ) async {
+    await FirebaseFirestore.instance.collection('Users').add({
+      'age': age,
+      'cellPhone': cellPhone,
+      'fullName': fullName,
+      'email': email,
+      'uiddd': lolo,
+    });
+   
   }
 
 
@@ -44,11 +74,8 @@ class _RegisterPageState extends State<RegisterPage> {
             child:
             SingleChildScrollView(
               child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(
-                  Icons.electric_bike,
-                  size: 200,
-                ),
-                SizedBox(height: 25),
+
+
                 Text('Registro',
                     style: GoogleFonts.bebasNeue(
                       fontSize: 54,
@@ -113,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 // Nombre completo
                 SizedBox(height: 10),
                 Row(
-                  children: [Text('         Nombre Completo')],
+                  children: [Text('         Nombre Completoo')],
                 ),
                 SizedBox(height: 5),
                 Padding(
@@ -127,7 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: TextField(
-                        controller: _emailController,
+                        controller: _fullnameController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Maria Belen',
@@ -155,7 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: TextField(
-                        controller: _emailController,
+                        controller: _cellphoneController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: '0992310235',
@@ -182,7 +209,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: TextField(
-                        controller: _emailController,
+                        controller: _ageController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: '21',
