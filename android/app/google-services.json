@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457146217669",
+    "project_id": "bikeapp-74404",
+    "storage_bucket": "bikeapp-74404.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457146217669:android:5a68d96d5f0788f861ecac",
+        "android_client_info": {
+          "package_name": "com.example.appmovil_ciclo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457146217669-gjb5t91q1730bllbtdb50bl8k09l53pp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw4XAoEhP-87kbb4kdB9m5VcFEeAK6O3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457146217669-gjb5t91q1730bllbtdb50bl8k09l53pp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
